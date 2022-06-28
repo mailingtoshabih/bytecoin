@@ -10,7 +10,7 @@ export const Header = () => {
                 {/* <!-- Background image --> */}
                 <div className="relative overflow-hidden bg-no-repeat bg-cover">
 
-                    <img src={header1} alt="" className='.h-auto mx-auto rounded-3xl blur-3xl' />
+                    <img src={header1} alt="" className='.h-auto mx-auto rounded-3xl' />
 
                 </div>
                 {/* <!-- Background image --> */}
