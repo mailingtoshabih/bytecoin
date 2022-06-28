@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bytecoin/static/css/main.387dafc7.css",
+    "main.js": "/bytecoin/static/js/main.f7b131a1.js",
+    "static/media/headerr.png": "/bytecoin/static/media/headerr.e5b884fc56719e0e280b.png",
+    "static/media/logo.png": "/bytecoin/static/media/logo.ee46ad2eee7691f884c2.png",
+    "index.html": "/bytecoin/index.html",
+    "main.387dafc7.css.map": "/bytecoin/static/css/main.387dafc7.css.map",
+    "main.f7b131a1.js.map": "/bytecoin/static/js/main.f7b131a1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.387dafc7.css",
+    "static/js/main.f7b131a1.js"
+  ]
+}
