@@ -1,125 +1,225 @@
-import { Link } from 'react-router-dom';
-import logo from '../components/assets/logo.png'
+import { Link } from 'react-router-dom'
+import { UserAuth } from '../context/Authcontext';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react'
 
 
 
-
-// -----------------------------------------------------------------------------------------------------------
 
 
 
 
 export const Navbar = () => {
-    return (
-        <>
 
 
-            {/* <!-- This example requires Tailwind CSS v2.0+ --> */}
+  const { user, logout } = UserAuth();
+  const navigate = useNavigate();
 
-            <nav className=''>
+  const handleSignOut = async (e) => {
+    try {
+      await logout()
+      navigate('/')
 
-                <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    } catch (e) {
+      alert(e.message)
+    }
+  }
 
-                    <div className="relative flex items-center justify-between h-16">
+  const [toggle, setToggle] = useState("hidden");
 
-                        <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-
-                            {/* <!-- Mobile menu button--> */}
-
-                            <button type="button" className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-                                <span className="sr-only">Open main menu</span>
-
-                                {/* <!--
-                                Icon when menu is closed.
-                                Heroicon name: outline/menu
-                                Menu open: "hidden", Menu closed: "block"--> */}
-
-                                <svg className="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                                </svg>
-
-                                {/* <!--
-                                Icon when menu is open.
-                                Heroicon name: outline/x
-                                Menu open: "block", Menu closed: "hidden" --> */}
-
-                                <svg className="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-
-                            </button>
-
-                        </div>
+  const handleClick = () => {
+    (toggle === "hidden" ? setToggle("visible") : setToggle("hidden"))
+  }
 
 
 
 
 
 
-                        <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-
-                            <div className="flex-shrink-0 flex items-center">
-                                <Link to='/'><img className="block lg:hidden h-10 w-auto" src={logo} alt="Workflow" /></Link>
-                                <Link to='/'><img className="hidden lg:block h-10 w-auto" src={logo} alt="Workflow" /></Link>
-                            </div>
-
-                            <div className="hidden sm:block sm:ml-6">
-                                <div className="flex space-x-4">
-                                    {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-
-                                    {/* <Link to="/" className="bg-gray-900 text-white  px-2 py-2 rounded-md text-base font-medium" aria-current="page">Home</Link> */}
-                                    <Link to="/cryptocurrencies" className="text-black-900  px-2 py-2 rounded-md text-md font-semibold hover:text-blue-600" aria-current="page">Cryptocurrencies</Link>
-                                    <Link to="/exchanges" className="text-black-900  px-2 py-2 rounded-md text-md font-semibold hover:text-blue-600" aria-current="page">Exchanges</Link>
-                                    <Link to="/news" className="text-grey-900  px-2 py-2 rounded-md text-md font-semibold hover:text-blue-600 " aria-current="page">News</Link>
-
-                                </div>
-                            </div>
-
-                        </div>
 
 
+  return (
 
-                        <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 mx-1">
-
-                    
-                            {/* <!-- Profile Pic dropdown --> */}
-                            <div className="ml-3 relative">
-
-                                <button className="ml-2 bg-purple-500 text-white font-semibold py-2 px-4 rounded-xl hover:bg-white hover:text-blue-500 focus:bg-blue-700">Signin</button>
-                                <button className=" xs:hidden ml-2 bg-purple-500 text-white font-semibold py-2 px-4 rounded-xl hover:bg-white hover:text-blue-500 focus:bg-blue-700">Register</button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
+    <>
+      <div className="relative bg-white mb-10 rounded-xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
 
 
+            {/*  contains logo */}
+            <div className="flex justify-start lg:w-0 lg:flex-1">
+              <Link to="/">
+                <span className="sr-only">ByteCoin</span>
+                <img className="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="" />
+              </Link>
+            </div>
 
 
-                {/* <!-- Mobile menu, show/hide based on menu state. --> */}
-                <div className="sm:hidden" id="mobile-menu">
-                    <div className="px-2 pt-2 pb-3 space-y-1">
-                        {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
+            {/* contains crypto and news */}
+            <nav className="hidden md:flex space-x-10">
 
 
-                        <Link to="/" className="border text-grey-900 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</Link>
-                        <Link to="/cryptocurrencies" className="border text-grey-900 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Cryptocurrencies</Link>
-                        <Link to="/exchanges" className="border text-grey-900 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Exchanges</Link>
-                        <Link to="/news" className="border text-grey-900 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">News</Link>
-
-
-                    </div>
-                </div>
-
+              <Link to="/" className="text-base font-medium text-gray-500 hover:text-gray-900"> Home </Link>
+              <Link to="/cryptocurrencies" className="text-base font-medium text-gray-500 hover:text-gray-900"> Cryptocurrencies </Link>
+              <Link to="/news" className="text-base font-medium text-gray-500 hover:text-gray-900"> News </Link>
 
 
             </nav>
 
 
+            {/*--------ternary - contains signin and signup or watchlist and signout----------------------*/}
+
+            {
+              user?.email ?
+                (
+                  <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                    <Link to="/accountpage" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"> Watchlist </Link>
+
+                    <Link to="/signout">
+                      <button onClick={handleSignOut} className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-red-600 bg-red-100 hover:bg-red-500 hover:text-white"> Sign Out </button>
+                    </Link>
+
+                  </div>
+                )
+                :
+                (
+                  <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                    <Link to="/signin" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"> Sign in </Link>
+                    <Link to="/signup" className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Sign up </Link>
+                  </div>
+                )
+            }
 
 
-        </>
-    )
+          </div>
+        </div>
+
+
+
+
+
+        {/* <!-- Mobile menu starts here---------------------------------------> */}
+
+
+
+        <div className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+
+          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+            <div className=" pt-5 pb-6 px-5">
+              <div className="flex items-center justify-between">
+
+
+
+                {/* contains mobile menu logo */}
+                <Link to="/">
+                  <div>
+                    <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
+                  </div>
+                </Link>
+
+
+
+                {/* ternary here -----------------------------------------------------------------------------------*/}
+                {toggle === "hidden" ?
+                  (
+                    <div className="-mr-2 -my-2 md:hidden">
+                      <button onClick={handleClick} type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+                        <span className="sr-only">Open menu</span>
+                        {/* <!-- Heroicon name: outline/menu --> */}
+                        <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                      </button>
+                    </div>
+                  )
+                  :
+                  (
+                    <div className="-mr-2">
+                      <button type="button" onClick={handleClick} className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span className="sr-only">Close menu</span>
+                        {/* <!-- Heroicon name: outline/x --> */}
+
+                        <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  )}
+
+              </div>
+
+
+
+
+              {/* mobile menu. contains cryptocur and news button */}
+              <div className={`${toggle} mt-6`}>
+                <nav className="grid gap-y-8">
+
+                  <Link to="/cryptocurrencies" className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                    {/* <!-- Heroicon name: outline/chart-bar --> */}
+                    <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    <span onClick={handleClick} className="ml-3 text-base font-medium text-gray-900"> Cryptocurrencies </span>
+                  </Link>
+
+                  <Link to="/news" className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                    {/* <!-- Heroicon name: outline/cursor-click --> */}
+                    <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                    </svg>
+                    <span onClick={handleClick} className="ml-3 text-base font-medium text-gray-900"> News </span>
+                  </Link>
+
+                </nav>
+              </div>
+
+            </div>
+
+
+
+            {/*ternary mobile menu. contains signin and signup or watchlist and signout */}
+            <div className={`${toggle} py-6 px-5 space-y-6`}>
+              <div>
+
+                {user?.email ?
+
+                  (
+                    <>
+                      <Link to="/accountpage" onClick={handleClick} className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Watchlist </Link>
+                      <p className="mt-6 text-center text-base font-medium text-gray-500">
+                        Want to leave ?
+                        <button onClick={handleSignOut} className='mx-2 text-red-500 hover:text-red-600'><p onClick={handleClick} > Sign Out </p></button>
+                      </p>
+                    </>
+                  )
+                  :
+                  (
+                    <>
+                      <Link to="/signup" onClick={handleClick}  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Sign up </Link>
+                      <p className="mt-6 text-center text-base font-medium text-gray-500">
+                        Existing customer?
+                        <Link to="/signin" onClick={handleClick} className="text-indigo-600 hover:text-indigo-500"> Sign in </Link>
+                      </p>
+                    </>
+                  )
+                }
+
+
+
+
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </>
+
+  )
 }

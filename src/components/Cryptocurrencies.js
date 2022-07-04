@@ -1,19 +1,18 @@
 // Consists : all coin table (coin search table), search bar
 
 import { Mappedcoin } from "./Mappedcoin";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
 
 
 
 
-
-
-export const Cryptocurrencies = ({ coins }) => {
-
+export const Cryptocurrencies = ({coins}) => {
 
   const [search, setSearch] = useState('');
+
 
 
 
@@ -24,17 +23,17 @@ export const Cryptocurrencies = ({ coins }) => {
     <>
 
       <div className="mx-auto mx-4 mt-10">
-        <h2 className="leading-tight font-bold mt-0 mb-2 text-black-600 md:text-5xl">Cryptocurrencies</h2>
+        <h2 className="leading-tight font-bold mt-0 mb-2 text-black-600 text-3xl sm:text-4xl md:text-5xl ">Cryptocurrencies</h2>
         <span className="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 my-2 inset-y-0 right-0">LIVE</span>
-      
+
 
 
         <div className="flex justify-left mt-5">
           <div className="mb-3 xl:w-96">
             <div className="input-group relative flex flex-wrap items-stretch w-full mb-4">
-              
-              <input type="search" className=" form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search by cryptocurrency name" aria-label="Search" aria-describedby="button-addon2" 
-              onChange={(e)=>setSearch(e.target.value)} />
+
+              <input type="search" className=" form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search by cryptocurrency name" aria-label="Search" aria-describedby="button-addon2"
+                onChange={(e) => setSearch(e.target.value)} />
 
             </div>
           </div>
@@ -59,8 +58,11 @@ export const Cryptocurrencies = ({ coins }) => {
                 <thead className="border">
 
                   <tr>
-                    
 
+
+                    <th scope="col" className="text-md font-medium text-gray-900 px-6 py-4 text-left">
+                      Add
+                    </th>
                     <th scope="col" className="text-md font-medium text-gray-900 px-6 py-4 text-left">
                       Cryptocurrency
                     </th>
@@ -87,23 +89,23 @@ export const Cryptocurrencies = ({ coins }) => {
                 </thead>
 
 
-                  {/* ----------------------------------------------------------------------- */}
+                {/* ----------------------------------------------------------------------- */}
 
                 <tbody>
 
                   {coins
-                  .filter( (value) => {
-                    if (search === ''){
+                    .filter((value) => {
+                      if (search === '') {
                         return value;
-                      } else if ( value.name.toLowerCase().includes(search.toLowerCase() )) {
+                      } else if (value.name.toLowerCase().includes(search.toLowerCase())) {
                         return value;
                       }
-                  })
-                  .map((coin) => (
-                    
-                    <Mappedcoin key={coin.id} coin={coin} />
-                    
-                  ))}
+                    })
+                    .map((coin) => (
+
+                      <Mappedcoin key={coin.id} coin={coin} />
+
+                    ))}
 
                 </tbody>
 

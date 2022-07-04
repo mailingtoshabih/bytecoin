@@ -5,7 +5,7 @@ import { Cryptodetails1 } from "./Cryptodetails1";
 import { Cryptodetails2 } from "./Cryptodetails2";
 import { Cryptodetails3 } from "./Cryptodetails3";
 
-
+import { useParams } from "react-router-dom";
 
 
 
@@ -16,8 +16,12 @@ export const CryptoDetails = () => {
 
 
   const [coin, setCoin] = useState({});
+  const params = useParams();
 
-  const url = "https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&sparkline=true"
+
+  const url = `https://api.coingecko.com/api/v3/coins/${params.coinId}?localization=false&sparkline=true`;
+
+
 
   useEffect(() => {
 
@@ -44,8 +48,6 @@ export const CryptoDetails = () => {
         <div className="flex-none max-w-sm rounded-xl overflow-hidden shadow-lg">
           <Cryptodetails1 coin={coin} />
         </div>
-
-
 
         <div className="flex-none max-w-sm rounded-xl overflow-hidden shadow-lg">
           <Cryptodetails2 coin={coin} />

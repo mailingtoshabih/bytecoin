@@ -8,10 +8,10 @@ export const Coinitem = ({coin}) => {
             <div className="flex justify-center">
 
                 <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg" style={{
-                        width:"300",
+                        width:"auto",
                         height:"auto"
-
                     }}>
+                        {/* make width to 300 */}
 
                     
                     

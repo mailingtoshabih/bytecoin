@@ -7,7 +7,7 @@ function App() {
   return (
     // bg-gradient-to-r from-white via-purple-500 to-white-500 ... => apply this color after completion. and change button colors of header
     
-    <div className="md:container mx-auto     bg-gradient-to-r from-white via-purple-500 to-white-500 ...">
+    <div className="md:container mx-auto">
       
 
       <BrowserRouter>

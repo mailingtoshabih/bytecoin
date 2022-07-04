@@ -2,31 +2,85 @@
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 import { Link } from 'react-router-dom';
 
+import { UserAuth } from '../context/Authcontext';
+import { db } from '../firebase';
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
+import { useState } from 'react';
+
+import { Toast } from './Toast';
 
 
 
 
 
-export const Mappedcoin = ({coin, key}) => {
+
+
+
+export const Mappedcoin = ({ coin, key }) => {
+
+    const [savedCoin, setSavedcoin] = useState(false);
+    const { user } = UserAuth();
+
+
+    const coinPath = doc(db, 'users', `${user?.email}`);
+
+    const saveCoin = async () => {
+
+        if (user?.email) {
+            setSavedcoin(true);
+            await updateDoc(coinPath, {
+
+                watchList: arrayUnion({
+                    id: coin.id,
+                    name: coin.name,
+                    image: coin.image,
+                    rank: coin.market_cap_rank,
+                    symbol: coin.symbol
+                    
+                })
+            })
+        }
+        else {
+            alert("Please sign in to save a coin to your watchlist.")
+        }
+
+
+    }
+
+
+
+
+
     return (
         <>
 
 
             <tr className="border-b hover:bg-gray-100">
 
-                {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{AiOutlineStar}</td> */}
-
-                {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{coin.market_cap_rank}</td> */}
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {savedCoin ? 
+                    (
+                    <button className="inline-block bg-blue-500 rounded-full px-1 font-semibold py-1 inset-y-0 right-0 text-lg text-white">+</button>
+                    ) 
+                    : 
+                    (
+                    <button className="inline-block bg-gray-300 rounded-full px-1 font-semibold py-1 inset-y-0 right-0 text-lg text-gray-800"  onClick={saveCoin} >-</button>
+                    )
+                }
+                    
+                </td>
 
 
                 <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
-                    
-                        <div className='flex items-center'>
-                            <img src={coin.image} alt="" className="object-contain md:object-scale-down w-8" />
-                            <div className='mx-3 font-base text-lg text-blue-700'>{coin.symbol.toUpperCase()}</div>
-                            <p className='.text-normal  text-gray-500'>{coin.name}</p>
-                        </div>
-                   
+
+                    <div className='flex items-center'>
+                        <img src={coin.image} alt="" className="object-contain md:object-scale-down w-8" />
+                        <Link to={`/crypto/${coin.id}`}>
+                            <div className='mx-3 font-semibold text-lg text-blue-800'>{coin.symbol.toUpperCase()}</div>
+                        </Link>
+                        <p className='.text-normal  text-gray-500'>{coin.name}</p>
+                    </div>
+
                 </td>
 
 
@@ -66,7 +120,9 @@ export const Mappedcoin = ({coin, key}) => {
                     ₹ {coin.market_cap}
                 </td>
 
+
             </tr>
+
 
 
         </>

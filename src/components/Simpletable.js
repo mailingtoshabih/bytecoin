@@ -22,11 +22,11 @@ export const Simpletable = () => {
 
     return (
         <div>
-            <div className="mx-auto mx-4 mt-10">
-                <h2 className="leading-tight font-bold mt-0 mb-2 text-black-600 md:text-5xl">Popular Cryptocurrencies</h2>
+            <div className="mx-auto mx-6 mt-10">
+                <h2 className="leading-tight font-bold mt-0 mb-2 text-black-600  text-2xl sm:text-4xl md:text-5xl ">Popular Cryptocurrencies</h2>
             </div>
-            <div className="mx-auto mx-4 my-10 font-semibold text-blue-500">
-                <Link to="/cryptocurrencies">View Advanced Data ▶️</Link>
+            <div className="mx-auto mx-6 my-5 font-semibold text-blue-500">
+                <Link to="/cryptocurrencies" target="_blank">View Advance Data</Link>
             </div>
 
 
@@ -35,15 +35,14 @@ export const Simpletable = () => {
 
 
             <div className="flex flex-col">
-                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div className="overflow-x-auto sm:-mx-8 lg:-mx-8">
                     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                         <div className="overflow-x-auto">
 
 
 
                             <table className="min-w-full">
-
-                                <thead className="border-b rounded-3xl">
+                                <thead className="bg-white border-b">
 
                                     <tr>
 

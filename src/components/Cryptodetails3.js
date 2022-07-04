@@ -20,13 +20,15 @@ export const Cryptodetails3 = ({ coin }) => {
 
 
 
-                <div className="font-bold text-xl mb-1">Description</div>
+                <div className="font-bold text-xl my-5">Description
+                    <span className="inline-block bg-yellow-400 rounded-full px-2  text-sm font-semibold text-black mb-2 mx-3">Beta</span>
+                </div>
 
-                <p dangerouslySetInnerHTML={{__html: DOMPurify.sanitize( coin.description ? coin.description.en: appDescription)}}   className="text-sm font-light leading-relaxed mt-1 mb-1 text-gray-800">
-                {/* {coin.description.en}     */}
+                <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(coin.description ? (coin.description.en.substring(0, 1200) + "...") : appDescription) }} className="text-md font-light leading-relaxed mt-1 mb-1 text-gray-800">
+                    {/* {coin.description.en}     */}
                 </p>
 
-                
+
 
             </div>
 

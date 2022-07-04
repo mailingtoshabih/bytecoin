@@ -4,7 +4,7 @@ export const Simplecoinitem = ({coin}) => {
     return (
         <>
 
-            <tr className="border-b">
+            <tr className="bg-gray-100 border-b">
 
                 <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
                     <div className='flex items-center'>

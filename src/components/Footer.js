@@ -6,7 +6,7 @@ export const Footer = () => {
         <>
 
 
-            <footer className="text-center bg-purple-900 text-white rounded-t-3xl mt-20">
+            <footer className="text-center bg-indigo-500 text-white rounded-t-3xl mt-20">
 
                 <div className="container px-6 pt-6">
                     <div className="flex justify-center mb-6">

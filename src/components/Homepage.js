@@ -3,7 +3,7 @@ import { Simpletable } from "./Simpletable";
 import { Topcoins } from './Topcoins';
 
 
-export const Homepage = ({coins}) => {
+export const Homepage = () => {
   return (
     <>
 
