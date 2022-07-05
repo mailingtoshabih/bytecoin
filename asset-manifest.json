@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/bytecoin/static/css/main.4f39a9c9.css",
-    "main.js": "/bytecoin/static/js/main.57c7508c.js",
+    "main.css": "/bytecoin/static/css/main.f4b25474.css",
+    "main.js": "/bytecoin/static/js/main.7b6c1c88.js",
     "static/media/one.png": "/bytecoin/static/media/one.f11596995a3dd4e9ff75.png",
     "static/media/two.png": "/bytecoin/static/media/two.0be8c00d001067195241.png",
     "index.html": "/bytecoin/index.html",
-    "main.4f39a9c9.css.map": "/bytecoin/static/css/main.4f39a9c9.css.map",
-    "main.57c7508c.js.map": "/bytecoin/static/js/main.57c7508c.js.map"
+    "main.f4b25474.css.map": "/bytecoin/static/css/main.f4b25474.css.map",
+    "main.7b6c1c88.js.map": "/bytecoin/static/js/main.7b6c1c88.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f39a9c9.css",
-    "static/js/main.57c7508c.js"
+    "static/css/main.f4b25474.css",
+    "static/js/main.7b6c1c88.js"
   ]
 }
