@@ -84,8 +84,8 @@ export const Navbar = () => {
                 :
                 (
                   <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                    <Link to="/signin" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"> Sign in </Link>
-                    <Link to="/signup" className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Sign up </Link>
+                    <Link to="/signin" className="font-medium text-gray-500 hover:text-gray-900"> Sign in </Link>
+                    <Link to="/signup" className="ml-8 items-center justify-center px-4 py-2 rounded-md shadow-sm font-medium text-white bg-violet-900 hover:bg-violet-700 duration-500"> Sign up </Link>
                   </div>
                 )
             }
@@ -104,7 +104,7 @@ export const Navbar = () => {
 
         <div className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
 
-          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+          <div className="rounded-lg ring-opacity-5 bg-green-200 divide-y-2 divide-gray-50">
             <div className=" pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
 
@@ -134,12 +134,12 @@ export const Navbar = () => {
                   )
                   :
                   (
-                    <div className="-mr-2">
-                      <button type="button" onClick={handleClick} className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                        <span className="sr-only">Close menu</span>
+                    <div className="-mr-2 outline-none">
+                      <button type="button" onClick={handleClick} className="bg-white outline-none rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span className="sr-only outline-none">Close menu</span>
                         {/* <!-- Heroicon name: outline/x --> */}
 
-                        <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
+                        <svg className="h-6 w-6 outline-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                       </button>
@@ -152,7 +152,7 @@ export const Navbar = () => {
 
 
               {/* mobile menu. contains cryptocur and news button */}
-              <div className={`${toggle} mt-6`}>
+              <div className={`${toggle} mt-6 z-10`}>
                 <nav className="grid gap-y-8">
 
                   <Link to="/cryptocurrencies" className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
@@ -163,7 +163,8 @@ export const Navbar = () => {
                     <span onClick={handleClick} className="ml-3 text-base font-medium text-gray-900"> Cryptocurrencies </span>
                   </Link>
 
-                  <Link to="/news" className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+
+                  <Link to="/news" className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 outline-none">
                     {/* <!-- Heroicon name: outline/cursor-click --> */}
                     <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
@@ -179,7 +180,7 @@ export const Navbar = () => {
 
 
             {/*ternary mobile menu. contains signin and signup or watchlist and signout */}
-            <div className={`${toggle} py-6 px-5 space-y-6`}>
+            <div className={`${toggle} py-6 px-5 space-y-6 z-10`}>
               <div>
 
                 {user?.email ?
@@ -196,10 +197,13 @@ export const Navbar = () => {
                   :
                   (
                     <>
-                      <Link to="/signup" onClick={handleClick}  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Sign up </Link>
+                      <Link to="/signup" onClick={handleClick}
+                        className="w-full flex items-center justify-center px-4 py-2 rounded-md shadow-sm text-base font-medium text-white bg-violet-900 hover:bg-violet-700 duration-700"> Sign up </Link>
                       <p className="mt-6 text-center text-base font-medium text-gray-500">
                         Existing customer?
-                        <Link to="/signin" onClick={handleClick} className="text-indigo-600 hover:text-indigo-500"> Sign in </Link>
+
+                        <Link to="/signin" onClick={handleClick}
+                          className="text-violet-900 font-semibold hover:text-indigo-500"> Sign in </Link>
                       </p>
                     </>
                   )

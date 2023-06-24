@@ -69,7 +69,7 @@ export const Footer = () => {
 
                 <div className="text-center p-4">
                     Powered by CoinGecko
-                    © 2022 Copyright :
+                    © 2023 Copyright :
                     Bytecoin
                 </div>
             </footer>

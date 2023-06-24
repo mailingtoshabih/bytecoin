@@ -10,7 +10,7 @@ import { Signup } from "./Signup"
 import { Accountpage } from "./Accountpage"
 
 
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useParams } from 'react-router-dom';
 
 import axios from 'axios';
 import { useEffect, useState } from "react"
@@ -39,6 +39,8 @@ export const MainPage = () => {
 
   const [coins, setCoins] = useState([]);
 
+  const params = useParams();
+
   const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=true`;
 
 
@@ -46,7 +48,7 @@ export const MainPage = () => {
     axios.get(url).then((response) => {
       setCoins(response.data);
     })
-  }, [url]);
+  }, [url, params]);
 
 
   return (

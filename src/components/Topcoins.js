@@ -31,7 +31,7 @@ export const Topcoins = () => {
 
 
             <div className="mx-auto my-10 mx-6">
-                <h2 className="leading-tight font-bold mt-0 mb-2 text-black-600 text-2xl sm:text-4xl md:text-5xl ">Today's Trending Coins</h2>
+                <h2 className="font-bold mt-0 mb-2 text-gray-800 text-2xl sm:text-4xl md:text-5xl ">Trending Today</h2>
             </div>
 
             

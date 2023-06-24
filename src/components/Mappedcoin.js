@@ -60,11 +60,11 @@ export const Mappedcoin = ({ coin, key }) => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                     {savedCoin ? 
                     (
-                    <button className="inline-block bg-blue-500 rounded-full px-1 font-semibold py-1 inset-y-0 right-0 text-lg text-white">+</button>
+                    <button className=" bg-violet-300 rounded-full p-2  font-semibold right-0 text-lg text-white"></button>
                     ) 
                     : 
                     (
-                    <button className="inline-block bg-gray-300 rounded-full px-1 font-semibold py-1 inset-y-0 right-0 text-lg text-gray-800"  onClick={saveCoin} >-</button>
+                    <button className="inline-block border-2 rounded-full px-2 font-semibold py-2 right-0 text-lg text-gray-800"  onClick={saveCoin} ></button>
                     )
                 }
                     

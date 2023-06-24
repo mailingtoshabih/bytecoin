@@ -8,25 +8,25 @@ import { Simplecoinitem } from "./Simplecoinitem";
 export const Simpletable = () => {
 
 
-    const [simpletable, setSimpletable] = useState([])
+    const [simpletable, setSimpletable] = useState([]);
 
-    const url= "https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=10&page=1&sparkline=true";
+    const url= "https://api.coingecko.com/";
 
     useEffect(() => {
-        axios.get(url).then((response) => {
+        axios.get(url + "api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=10&page=1&sparkline=true").then((response) => {
             setSimpletable(response.data);
-        })
+        }).catch((e)=>console.log(e.message))
 
-    },[url])
+    },[])
     
 
     return (
-        <div>
-            <div className="mx-auto mx-6 mt-10">
-                <h2 className="leading-tight font-bold mt-0 mb-2 text-black-600  text-2xl sm:text-4xl md:text-5xl ">Popular Cryptocurrencies</h2>
+        <div className="px-3">
+            <div className="mx-auto mt-10">
+                <h2 className="font-semibold mt-0 mb-2 text-gray-800  text-2xl sm:text-4xl md:text-5xl ">Popular Cryptocurrencies</h2>
             </div>
-            <div className="mx-auto mx-6 my-5 font-semibold text-blue-500">
-                <Link to="/cryptocurrencies" target="_blank">View Advance Data</Link>
+            <div className="mx-auto my-5 font-semibold text-violet-800">
+                <Link to="/cryptocurrencies" target="_blank">Market</Link>
             </div>
 
 
@@ -65,7 +65,7 @@ export const Simpletable = () => {
 
                                 <tbody>
 
-                                    {simpletable.map((coin) => (
+                                    {simpletable?.map((coin) => (
 
                                         <Simplecoinitem key={coin.id} coin={coin}/>
                                     ))}

@@ -9,9 +9,14 @@ import axios from "axios";
 
 
 
-export const Cryptocurrencies = ({coins}) => {
+export const Cryptocurrencies = ({ coins }) => {
 
   const [search, setSearch] = useState('');
+
+
+  useEffect(()=>{
+    window.scroll(0,0);
+  },[])
 
 
 
@@ -22,17 +27,21 @@ export const Cryptocurrencies = ({coins}) => {
   return (
     <>
 
-      <div className="mx-auto mx-4 mt-10">
-        <h2 className="leading-tight font-bold mt-0 mb-2 text-black-600 text-3xl sm:text-4xl md:text-5xl ">Cryptocurrencies</h2>
-        <span className="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 my-2 inset-y-0 right-0">LIVE</span>
+      <div className="px-3 mt-10 text-gray-800">
+        <h2 className="leading-tight font-bold mt-0 mb-2 text-3xl sm:text-4xl md:text-5xl ">Cryptocurrencies</h2>
+        <span className="inline-block bg-green-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 animate-pulse my-2 inset-y-0 right-0">LIVE</span>
 
 
 
         <div className="flex justify-left mt-5">
-          <div className="mb-3 xl:w-96">
+          <div className="mb-3 w-full">
             <div className="input-group relative flex flex-wrap items-stretch w-full mb-4">
 
-              <input type="search" className=" form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search by cryptocurrency name" aria-label="Search" aria-describedby="button-addon2"
+              <input type="search"
+                className=" form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-gray-100 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+                placeholder="Search by cryptocurrency name" 
+                aria-label="Search" 
+                aria-describedby="button-addon2"
                 onChange={(e) => setSearch(e.target.value)} />
 
             </div>
